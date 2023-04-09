@@ -1,0 +1,14 @@
+<launch>
+	<group ns="new_ns">
+	<arg name="changehere" default="new_chatter" />
+		<node name="sender" pkg="rospy_tutorials" type="listener.py" output="screen">
+		<remap from="chatter" to="$(arg changehere)"/>
+		</node>
+	<include file="$(find study_pkg)/launch/another_one.launch" >
+		<arg name="another_topic" value="$(arg changehere)" />
+	</include>
+		<node name="receiver" pkg="rospy_tutorials" type="talker.py" output="screen">
+			<remap from="chatter" to="$(arg changehere)"/>
+		</node>
+	</group>
+</launch>

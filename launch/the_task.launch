@@ -1,0 +1,11 @@
+
+<launch>
+  <group ns='script'>
+   <node name='polynomial' pkg='pkg_my' type='polynomial.py' output='screen'/>
+   <node name='summing' pkg='pkg_my' type='summing.py' output='screen'/>
+  </group>
+   <node name='request' pkg='pkg_my' type='request.py' output='screen' >
+   <remap from='reqpol' to='script/reqpol' />
+   <remap from='sumreq' to='script/sumreq' />
+  </node>
+</launch>
